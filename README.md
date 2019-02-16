@@ -23,6 +23,7 @@ Then copy these two files (and *just* these two files) into the plugin installat
 plugin's build folder:
 
 a. VirtualRadar.**PLUGIN NAME HERE**.dll
+
 b. VirtualRadar.**PLUGIN NAME HERE**.xml
 
 Note that the build folder will have other files and DLLs in addition to the plugin DLL and XML file.
@@ -31,8 +32,8 @@ You can ignore those files, they were only required to build and are not require
 Restart VRS if it's already running and you should see the plugin in the **Tools | Plugins** menu.
 
 ## Version 2 vs. Version 3
-The plugins will have a -v2 or -v3 suffix. These refer to the version of Virtual Radar Server that
-they will work with. Version 2 is the current release version of VRS, version 3 is currently in beta.
+The plugin projects have a -v2 or -v3 suffix. These refer to the version of Virtual Radar Server that
+they will work with. Version 2 is the current release version of VRS, version 3 is in beta.
 
 The plugin specification is different between v2 and v3 so you need to make sure that you build and
 install the correct version for the instance of Virtual Radar Server that you want to use with the
