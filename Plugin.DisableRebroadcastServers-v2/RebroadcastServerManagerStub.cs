@@ -17,6 +17,7 @@ using VirtualRadar.Interface.Network;
 
 namespace Plugin.DisableRebroadcastServers
 {
+    #pragma warning disable 0067        // Event never used
     /// <summary>
     /// A stub implementation of <see cref="IRebroadcastServerManager"/> that does nothing.
     /// </summary>

@@ -18,11 +18,12 @@ using VirtualRadar.Interface.Network;
 
 namespace Plugin.DisableRebroadcastServers
 {
+    #pragma warning disable 0067        // Event never used
     public class Plugin : IPlugin
     {
         public string Id                { get { return "DisableRebroadcastServers"; } }
         public string Name              { get { return "Disable Rebroadcast Servers"; } }
-        public string Version           { get { return "2.4.2"; } }
+        public string Version           { get { return "2.4.4"; } }
         public string Status            { get { return "Enabled"; } }
         public string StatusDescription { get { return Status; } }
         public bool HasOptions          { get { return false; } }
