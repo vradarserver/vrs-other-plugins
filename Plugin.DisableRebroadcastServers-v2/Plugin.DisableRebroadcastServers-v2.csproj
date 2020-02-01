@@ -32,16 +32,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxMin, Version=4.0.202.1, Culture=neutral, PublicKeyToken=24297a69a7eae424, processorArchitecture=MSIL">
-      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.2\lib\net35\AjaxMin.dll</HintPath>
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.2\lib\net35\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="InterfaceFactory, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VirtualRadar.InterfaceFactory.2.4.2\lib\net35\InterfaceFactory.dll</HintPath>
+    <Reference Include="InterfaceFactory, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWhewell.InterfaceFactory.4.0.0\lib\net35\InterfaceFactory.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.2\lib\net35\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,14 +49,29 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="VirtualRadar.Database, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\VirtualRadar.Database.dll</HintPath>
+    </Reference>
     <Reference Include="VirtualRadar.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.2\lib\net35\VirtualRadar.Interface.dll</HintPath>
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\VirtualRadar.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="VirtualRadar.Interop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\VirtualRadar.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="VirtualRadar.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\VirtualRadar.Library.dll</HintPath>
     </Reference>
     <Reference Include="VirtualRadar.Localisation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.2\lib\net35\VirtualRadar.Localisation.dll</HintPath>
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\VirtualRadar.Localisation.dll</HintPath>
+    </Reference>
+    <Reference Include="VirtualRadar.SQLiteWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\VirtualRadar.SQLiteWrapper.dll</HintPath>
     </Reference>
     <Reference Include="VirtualRadar.WebSite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.2\lib\net35\VirtualRadar.WebSite.dll</HintPath>
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\VirtualRadar.WebSite.dll</HintPath>
+    </Reference>
+    <Reference Include="VirtualRadar.WinForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VirtualRadar.PluginLibraries.2.4.4\lib\net35\VirtualRadar.WinForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -66,12 +81,12 @@
     <Compile Include="RebroadcastServerManagerStub.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="VirtualRadar.Plugin.DisableRebroadcastServers.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
