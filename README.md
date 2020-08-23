@@ -2,6 +2,10 @@
 These are a collection of plugins that I've written on an ad-hoc basis to make small changes
 to Virtual Radar Server's behaviour.
 
+## How to Write a Plugin
+
+Documentation is here: http://www.virtualradarserver.co.uk/Documentation/Plugins/Default.aspx
+
 ## How to Build
 1. Install Visual Studio 2017 (the free version will be fine).
 
