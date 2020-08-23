@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.DisableRebroadcastSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.OpenSkyReceiver-v2", "Plugin.OpenSkyReceiver-v2\Plugin.OpenSkyReceiver-v2.csproj", "{1D510D81-E0C0-4BFC-BB5A-3F0838E02F2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.EnumerateAircraftLists-v2", "Plugin.EnumerateAircraftLists-v2\Plugin.EnumerateAircraftLists-v2.csproj", "{8AC8547D-F21F-4425-BE36-A176095248AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.EnumerateAircraftLists-v3", "Plugin.EnumerateAircraftLists-v3\Plugin.EnumerateAircraftLists-v3.csproj", "{EE274108-ACC5-45D1-8B0C-F24EE001EFD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{1D510D81-E0C0-4BFC-BB5A-3F0838E02F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D510D81-E0C0-4BFC-BB5A-3F0838E02F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D510D81-E0C0-4BFC-BB5A-3F0838E02F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC8547D-F21F-4425-BE36-A176095248AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC8547D-F21F-4425-BE36-A176095248AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC8547D-F21F-4425-BE36-A176095248AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC8547D-F21F-4425-BE36-A176095248AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE274108-ACC5-45D1-8B0C-F24EE001EFD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE274108-ACC5-45D1-8B0C-F24EE001EFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE274108-ACC5-45D1-8B0C-F24EE001EFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE274108-ACC5-45D1-8B0C-F24EE001EFD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
