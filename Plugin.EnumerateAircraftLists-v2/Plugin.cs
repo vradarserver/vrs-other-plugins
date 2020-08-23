@@ -109,12 +109,21 @@ namespace Plugin.EnumerateAircraftLists
             _AircraftListEnumerator = new AircraftListEnumerator();
 
             _Timer = new System.Timers.Timer() {
-                Interval =  1000, // milliseconds
+                Interval = 1000, // milliseconds
                 Enabled = false,
-                AutoReset = true,
+                AutoReset = false,
             };
             _Timer.Elapsed += Timer_Elapsed;
-            _Timer.Enabled = true;
+            _Timer.Start();
+
+            // An earlier version of this had AutoReset set to true. That works fine with this example but
+            // it could cause issues with other people's code, particularly if whatever they're doing in the
+            // Elapsed event handler takes more than 1000 milliseconds (or however long the timer interval
+            // is set to). AutoReset could trigger overlapping concurrent calls to the event handler, which
+            // might come as a surprise.
+            //
+            // So to be safe I've changed the sample so that the event handler has to explicitly restart the
+            // timer once all of its work is complete. That way there is no possibility of overlapping calls.
         }
 
         /// <summary>
@@ -124,13 +133,21 @@ namespace Plugin.EnumerateAircraftLists
         /// <param name="args"></param>
         private void Timer_Elapsed(object sender, EventArgs args)
         {
-            // Get an array of snapshots
-            var snapshots = _AircraftListEnumerator.TakeSnapshotsForAllLists();
+            try {
+                // Get an array of snapshots
+                var snapshots = _AircraftListEnumerator.TakeSnapshotsForAllLists();
 
-            // Do something with them
-            var newStatus = $"[{DateTime.Now}] Tracking {snapshots.Sum(r => r.Snapshot.Count)} aircraft across {snapshots.Length} list(s)";
-            StatusDescription = newStatus;
-            OnStatusChanged(EventArgs.Empty);
+                // Do something with them
+                var newStatus = $"[{DateTime.Now}] Tracking {snapshots.Sum(r => r.Snapshot.Count)} aircraft across {snapshots.Length} list(s)";
+                StatusDescription = newStatus;
+                OnStatusChanged(EventArgs.Empty);
+
+                // Restart the timer
+                _Timer.Start();
+            } catch(Exception ex) {
+                var log = Factory.ResolveSingleton<ILog>();
+                log.WriteLine($"Caught exception in {GetType().FullName} timer: {ex}");
+            }
         }
     }
 }
