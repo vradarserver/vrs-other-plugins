@@ -1,7 +1,7 @@
 ﻿# Plugin.AirportDataThumbnails
 
 This plugin reinstates the thumbnails from airport-data.com that were removed
-in 2.4.5 preview 4 after AVG, Malwarebytes, Kapersky and ForcePoint all began
+in 3.0.0 preview 4 after AVG, Malwarebytes, Kapersky and ForcePoint all began
 reporting issues with, and blocking links to, the server that hosts the site.
 
 See
