@@ -328,3 +328,8 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# VRS Build Files & Folders
+/Installers/InnoSetup/Output/
+/Installers/Mono/output
+/Installers/Mono/work-*
