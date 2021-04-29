@@ -1,0 +1,136 @@
+name: Build AirportData Thumbnails Plugin
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v1.0.5
+        with:
+          nuget-version: '5.x'
+
+      - name: Restore packages
+        run:  nuget restore vrs-other-plugins.sln
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+        with:
+          vs-version: '[16.0.0.0,16.65535.65535.65535]'
+
+      - name: Build solution
+        run:  msbuild vrs-other-plugins.sln -property:Configuration=Release,Platform=x86 -nowarn:1570,1572,1573,1574,1584,1587,1591,1711
+
+      - name: Build AirportData Thumbnails v2 plugin installer
+        run:  iscc Installers\InnoSetup\Plugin-AirportDataThumbnails-v2.iss
+
+      - name:  Build AirportData Thumbnails v2 tarball
+        run:   Installers\Mono\build-plugin-airportdata-thumbnails-v2.sh
+        shell: bash
+
+      - name: Build AirportData Thumbnails v3 plugin installer
+        run:  iscc Installers\InnoSetup\Plugin-AirportDataThumbnails-v3.iss
+
+      - name:  Build AirportData Thumbnails v3 tarball
+        run:   Installers\Mono\build-plugin-airportdata-thumbnails-v3.sh
+        shell: bash
+
+      - name:  Build Windows .NET Framework SHA256 checksums
+        run:   cd Installers/InnoSetup/Output; sha256sum *.exe > checksums-windows-sha256.txt
+        shell: bash
+
+      - name:  Fix line endings on Windows .NET Framework SHA256 checksums
+        run:   unix2dos Installers/InnoSetup/Output/checksums-windows-sha256.txt
+        shell: bash
+
+      - name:  Build Mono SHA256 checksums
+        run:   cd Installers/Mono/output; sha256sum *.tar.gz > checksums-mono-sha256.txt
+        shell: bash
+
+      - name: Create Mono release
+        id:   mono_release
+        uses: marvinpinto/action-automatic-releases@v1.1.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repo_token:            ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest-airportdata-thumbnails
+          release_name:          AirportData Thumbnails [Linux / Mac OSX Mono]
+          draft:                 true
+          prerelease:            true
+            
+      - name: Create Windows release
+        id:   windows_release
+        uses: marvinpinto/action-automatic-releases@v1.1.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repo_token:            ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest-airportdata-thumbnails
+          release_name:          AirportData Thumbnails [Windows]
+          draft:                 true
+          prerelease:            true
+
+      - name: Add v2 installer to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.framework_release.outputs.upload_url }}
+          asset_content_type: application/vnd.microsoft.portable-executable
+          asset_path: Installers\InnoSetup\Output\Plugin-AirportDataThumbnails-v2.exe
+          asset_name:                             Plugin-AirportDataThumbnails-v2.exe
+
+      - name: Add v3 installer to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.framework_release.outputs.upload_url }}
+          asset_content_type: application/vnd.microsoft.portable-executable
+          asset_path: Installers\InnoSetup\Output\Plugin-AirportDataThumbnails-v3.exe
+          asset_name:                             Plugin-AirportDataThumbnails-v3.exe
+
+      - name: Add v2 tarball to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.mono_release.outputs.upload_url }}
+          asset_content_type: application/gzip
+          asset_path: Installers\Mono\output\Plugin-AirportDataThumbnails-v2.tar.gz
+          asset_name:                        Plugin-AirportDataThumbnails-v2.tar.gz
+
+      - name: Add v3 tarball to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.mono_release.outputs.upload_url }}
+          asset_content_type: application/gzip
+          asset_path: Installers\Mono\output\Plugin-AirportDataThumbnails-v3.tar.gz
+          asset_name:                        Plugin-AirportDataThumbnails-v3.tar.gz
+
+      - name: Add Windows .NET Framework SHA256 checksums to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.framework_release.outputs.upload_url }}
+          asset_content_type: application/vnd.microsoft.portable-executable
+          asset_path: Installers\InnoSetup\Output\checksums-windows-sha256.txt
+          asset_name:                             checksums-windows-sha256.txt
+
+      - name: Add Mono SHA256 checksums to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.mono_release.outputs.upload_url }}
+          asset_content_type: application/gzip
+          asset_path: Installers\Mono\output\checksums-mono-sha256.txt
+          asset_name:                        checksums-mono-sha256.txt
