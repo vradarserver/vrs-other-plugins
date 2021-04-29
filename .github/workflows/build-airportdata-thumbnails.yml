@@ -59,19 +59,19 @@ jobs:
         with:
           repo_token:            ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: latest-airportdata-thumbnails
-          release_name:          AirportData Thumbnails [Linux / Mac OSX Mono]
+          title:                 AirportData Thumbnails [Linux / Mac OSX Mono]
           draft:                 true
           prerelease:            true
             
       - name: Create Windows release
-        id:   windows_release
+        id:   framework_release
         uses: marvinpinto/action-automatic-releases@v1.1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           repo_token:            ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: latest-airportdata-thumbnails
-          release_name:          AirportData Thumbnails [Windows]
+          title:                 AirportData Thumbnails [Windows]
           draft:                 true
           prerelease:            true
 
