@@ -63,9 +63,9 @@ jobs:
           draft:                 true
           prerelease:            true
           files: |
-            Installers\Mono\output\Plugin-AirportDataThumbnails-v2.tar.gz
-            Installers\Mono\output\Plugin-AirportDataThumbnails-v3.tar.gz
-            Installers\Mono\output\checksums-mono-sha256.txt
+            Installers/Mono/output/Plugin-AirportDataThumbnails-v2.tar.gz
+            Installers/Mono/output/Plugin-AirportDataThumbnails-v3.tar.gz
+            Installers/Mono/output/checksums-mono-sha256.txt
 
       - name: Create Windows release
         id:   framework_release
@@ -79,6 +79,6 @@ jobs:
           draft:                 true
           prerelease:            true
           files: |
-            Installers\InnoSetup\Output\Plugin-AirportDataThumbnails-v2.exe
-            Installers\InnoSetup\Output\Plugin-AirportDataThumbnails-v3.exe
-            Installers\InnoSetup\Output\checksums-windows-sha256.txt
+            Installers/InnoSetup/Output/Plugin-AirportDataThumbnails-v2.exe
+            Installers/InnoSetup/Output/Plugin-AirportDataThumbnails-v3.exe
+            Installers/InnoSetup/Output/checksums-windows-sha256.txt
