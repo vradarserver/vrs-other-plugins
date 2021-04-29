@@ -23,7 +23,7 @@ jobs:
           vs-version: '[16.0.0.0,16.65535.65535.65535]'
 
       - name: Build solution
-        run:  msbuild vrs-other-plugins.sln -property:Configuration=Release,Platform=x86 -nowarn:1570,1572,1573,1574,1584,1587,1591,1711
+        run:  msbuild vrs-other-plugins.sln -property:Configuration=Release -nowarn:1570,1572,1573,1574,1584,1587,1591,1711
 
       - name: Build AirportData Thumbnails v2 plugin installer
         run:  iscc Installers\InnoSetup\Plugin-AirportDataThumbnails-v2.iss
