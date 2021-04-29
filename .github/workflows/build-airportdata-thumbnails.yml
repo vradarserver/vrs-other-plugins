@@ -29,14 +29,14 @@ jobs:
         run:  iscc Installers\InnoSetup\Plugin-AirportDataThumbnails-v2.iss
 
       - name:  Build AirportData Thumbnails v2 tarball
-        run:   Installers\Mono\build-plugin-airportdata-thumbnails-v2.sh
+        run:   Installers/Mono/build-plugin-airportdata-thumbnails-v2.sh
         shell: bash
 
       - name: Build AirportData Thumbnails v3 plugin installer
         run:  iscc Installers\InnoSetup\Plugin-AirportDataThumbnails-v3.iss
 
       - name:  Build AirportData Thumbnails v3 tarball
-        run:   Installers\Mono\build-plugin-airportdata-thumbnails-v3.sh
+        run:   Installers/Mono/build-plugin-airportdata-thumbnails-v3.sh
         shell: bash
 
       - name:  Build Windows .NET Framework SHA256 checksums
